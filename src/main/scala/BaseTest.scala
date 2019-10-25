@@ -13,7 +13,7 @@ object BaseTest {
     val sc = new SparkContext(conf)
 
     //使用sc创建RDD并执行相应的transformation和action
-    val result = sc.textFile("C:\\Users\\Dell\\Desktop\\日志分析\\error-log24-2.log").flatMap(_.split(" ")).map((_, 1)).reduceByKey(_ + _, 1).sortBy(_._2, false)
+    val result = sc.textFile("C:\\Users\\Dell\\Desktop\\word.txt").flatMap(_.split(" ")).map((_, 1)).reduceByKey(_ + _, 1).sortBy(_._2, false)
 
     //停止sc，结束该任务
     result.collect().foreach(println(_))
